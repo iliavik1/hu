@@ -19,7 +19,9 @@ jobs:
           cmd /c Downloads.bat
 
       - name: Log In To AnyDesk
-        run: cmd /c show.bat
+        run: |
+          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/cwbwdo2n3tt8rbqmugc6h/show.bat?rlkey=41m0ds12mg6e28giib3zqlf6w&dl=1" -OutFile "show.bat"
+          cmd /c show.bat
 
       - name: Time Counter
         run: |
