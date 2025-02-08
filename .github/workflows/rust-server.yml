@@ -14,8 +14,8 @@ jobs:
 
     - name: Setup environment
       run: |
-        sudo apt-get update
-        sudo apt-get install -y lib32gcc1 openssh-server
+        sudo apt-get update || true
+        sudo apt-get install -y lib32gcc-s1 openssh-server || { echo "Failed to install packages"; exit 1; }
 
     - name: Start SSH service
       run: |
@@ -62,4 +62,4 @@ jobs:
 
     - name: Keep server running for testing
       run: |
-        sleep 99999  # Keep running for 1 hour (3600 seconds); adjust as needed
+        sleep 21600  # Keep running for 1 hour (3600 seconds); adjust as needed
