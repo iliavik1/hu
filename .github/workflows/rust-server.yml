@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup environment
       run: |
@@ -35,7 +35,7 @@ jobs:
 
     - name: Wait for ngrok to start
       run: |
-        sleep 1
+        sleep 5  # Increased from 1 second to ensure ngrok has started
 
     - name: Display ngrok tunnel info
       run: |
@@ -50,15 +50,16 @@ jobs:
 
     - name: Install Rust Server
       run: |
-        ./steamcmd/steamcmd.sh +login anonymous +force_install_dir ./rust +app_update 258550 validate +quit
+        cd steamcmd
+        ./steamcmd.sh +login anonymous +force_install_dir ../rust +app_update 258550 validate +quit
 
     - name: Run Rust Server
       run: |
         cd rust
         nohup ./RustDedicated -batchmode +server.port 28015 +server.hostname "Your Server Name" +server.maxplayers 100 +server.worldsize 4000 +server.seed 12345 +server.identity "server1" +rcon.port 28016 +rcon.password "YourRCONPassword" &
       env:
-        LD_LIBRARY_PATH: /home/runner/work/your-repo-name/your-repo-name/rust/linux64
+        LD_LIBRARY_PATH: /home/runner/work/your-repo-name/your-repo-name/rust/Linux64
 
     - name: Keep server running for testing
       run: |
-        sleep 99999 # Keep the server running for 1 hour to test; adjust as needed
+        sleep 99999  # Keep running for 1 hour (3600 seconds); adjust as needed
